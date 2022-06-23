@@ -1,0 +1,5 @@
+Control +H => Archivos ocultos
+Vaciar papelera ROOT=> sudo rm -rf ~/.local/share/Trash/*
+
+Crear Lanzador => gnome-desktop-item-edit ~/Escritorio --create-new
+

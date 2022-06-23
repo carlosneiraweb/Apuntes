@@ -1,0 +1,147 @@
+
+
+
+
+git commit -a -m 'La \a\ nos evita tener que añadir con \add\ los archivos y las modificaciones
+use "git reset HEAD <file>..." to unstage => saca del stage
+
+gitk =>visor grafico
+
+gitk =>programa grafico
+git remote -v =>MUestra listado de repositorios remotos
+
+///////////////////////ADD/////////////////////
+Añade nuevos archivos
+Prepara los archivos con cambios
+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
+
+/////////////ELIMINAR ARCHIVOS/////////
+git rm => archivos que no esten en el stage
+git rm -f GIT/public_html/eliminar.html=> ARCHIVOS QUE YA ESTEN EN EL STAGE
+git mv arcivo archivo.txt
+
+Directorio de trabajo => Indice del entorno de ensayo(add) => Historial de confirmaciones
+
+	git status muestra los cambios entre el historial  de confirmaciones y el indice del entorno de ensayo(add)(letras verdes)
+	git status muestra los cambios en el directorio de trabajo(letras rojas)
+	git ls-files -s =>Comprueba elestado del entorno de ensayo(letras verdes)
+
+
+
+//////////////DIFF///////////
+Muestra los cambios que no estan aun preparados 'no se ha usado el comando add'
+git diff --staged => muestra los cambios que iran en el proximo commit
+
+
+////////////CHECKOUT//////////////
+git chekout comandos.txt => desace los cambion hechos en el archivo, lo devuelvo al ultimo commit
+
+
+///REPOSITORIO REMOTO///
+
+origin => repositorio remoto original
+main  => rama principal 'antiguamente llamada master antes de 2020'
+git remote -v
+1) git remote show origin => informacion rama remota. Tambien nos dice si nuestro directorio 
+                            esta actualizado 'up to date' o alguien a modificado el remoto 'local out date'
+git branch -r => Para saber las ramas con las que trabaja nuestro repositorio
+2)git fetch => Nos descarga la modificaciones que hayan sido hechas en el remoto
+             Pero no las añade a nuestro  directorio local
+3)git checkout o git checkout FETCH_HEAD => NOs indica los cambios realizados en el remoto
+git log origin/main => Nos da mas informacion
+4)git merge origin/main => Hacemos un merge de nuestro repositorio local con el remoto
+                        git fetch/merge = git pull
+
+    
+
+
+
+
+                ////tag//// 
+
+git tab crea una rama del proyecto por ejemplo v01
+Existen las anotadas o las ligeras
+git tag =>lista de etiquetas
+git tag --delete 'nombre etiqueta'
+git tag -a anotada -m 'anotada'=>copia del proyecto
+git tag ligera =>no lleva anotacion
+git show v1.5 => Muestra informacion de la etiqueta
+Tambien se pueden hacer etiquetas de anteriores commits
+git log --pretty=oneline
+git tag -a v1.2 'numero del commit'
+git push origin v1.5 =>SUbe etiquetas
+
+
+
+
+        ///GIT LOG///
+git status muestra el estado del repositorio
+
+git log => muestra todos los commits
+git log --oneline
+git log --graph =>Muestra un grafico con las ramas y las uniones
+
+        MOVERSE POR LOS COMMITS
+git log --oneline => Muestra los commits 
+git checkout 'numero del commit' nos mueve al commit señalado
+git reflog =>Muestra todos los cambios del HEAD a los commits
+	
+	
+
+	/////GIT RESET =>  https://www.atlassian.com/es/git/tutorials/undoing-changes/git-reset
+	git ls-remote => indica ultimo commit del remoto
+	git log --remotes
+1º Si no hemos subido los cambios al repositorio remoto
+
+	(Nos devuelve al estado anterior en los tres arboles, no es necesario haber echo un commit)
+    	git reset --hard HEAD~1
+	git reset --hard d4e428e =>Nos mueve al commit señalado. OJO elimina commits posteriores, datos del stage y area de trabajo
+
+	//Funcionamiento predeterminado
+	git reset --mixed => Elimina las modificaciones del stage 
+			     
+	git reset --mixed HEAD~1 => Elimina del stage y el commit señalado
+	
+	OJO => En el area de trabajo las modificaciones siguen estando
+		Para que se queden como antes del 'add' hay que utilizar checkout + archivo o borrar los nuevos archivos
+
+	git reset --soft HEAD~1 => Elimina el ultimo commit dejando el stage y el area de trabajo como estaban antes de hacer el commit
+        git reset --soft 3ea22b3
+
+
+2ºSi hemos hecho push
+
+    git revert HEAD => Desace el anterior commit si hacemos 'git log --oneline' seguira apareciendo los commits saltados
+    git revert	HEAD 320cd613df19acb496920a27ffe2e6474ca4a0d2
+
+
+
+
+
+
+
+
+                            
+
+
+                                ///RAMAS////
+
+git branch 'nueva rama' =>crea nueva rama pero no nos mueve a ella
+git checkout 'nueva rama' => Nos mueve a la nueva rama
+git checkout -b 'nueva rama' =>Crea y nos mueve a la nueva rama
+	
+git branch -d 'nueva rama ' =>Elimina la rama en local !! OJO DESDE MAIN !!
+git branch origin --delete 'nueva rama' || git push origin --delete nueva_rama =>Elimina rama en remoto !! OJO DESDE MAIN !!
+git push origin 'nueva rama' => para subir remoto
+
+
+				///MERGE 
+https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Procedimientos-B%C3%A1sicos-para-Ramificar-y-Fusionar
+
+//Antes de hacer un merge hay que volver a la ramam main
+git merge hotfix =>Hace merge desde MAIN a la rama señalada !! OJO DESDE MAIN !!
+git branch -d hotfix =>Eliminamos la rama
+hacer commit desde main
+
+
+
