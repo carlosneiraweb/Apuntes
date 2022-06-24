@@ -1,7 +1,7 @@
 #eliminamos directorios del proyecto en NetBeans
 #para poder trabajar en WIndows y Ubuntu
-/varios/nbproject
-/varios/build.xml
-/revert/manifest.mf
-/revert/test/
-/revert/build/
+/Apuntes/nbproject
+/Apuntes/build.xml
+/Apuntes/manifest.mf
+/Apuntes/test/
+/Apuntes/build/

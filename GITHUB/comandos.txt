@@ -131,8 +131,9 @@ git checkout 'nueva rama' => Nos mueve a la nueva rama
 git checkout -b 'nueva rama' =>Crea y nos mueve a la nueva rama
 	
 git branch -d 'nueva rama ' =>Elimina la rama en local !! OJO DESDE MAIN !!
-git branch origin --delete 'nueva rama' || git push origin --delete nueva_rama =>Elimina rama en remoto !! OJO DESDE MAIN !!
 git push origin 'nueva rama' => para subir remoto
+
+git branch origin --delete 'nueva rama' || git push origin --delete nueva_rama =>Elimina rama en remoto !! OJO DESDE MAIN !!
 
 
 				///MERGE 
